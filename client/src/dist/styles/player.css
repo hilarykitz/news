@@ -1,0 +1,34 @@
+.musicPlayer {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 60px;
+  background: #0b92ef;
+  color: white; }
+  .musicPlayer input {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    margin: 0 auto;
+    text-align: center; }
+  .musicPlayer .slider {
+    width: 100%;
+    background: white;
+    height: 2px; }
+    .musicPlayer .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #00d2be;
+      border: 2px white solid;
+      cursor: pointer; }
+  .musicPlayer .timeLeft {
+    font-size: 13px;
+    margin: 0; }
+  .musicPlayer .nowPlaying {
+    margin: 15px 15px 0px; }

@@ -1,0 +1,28 @@
+.searchWrapper {
+  color: white;
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.15);
+  h2,
+  h3 {
+    margin: 0;
+  }
+  input {
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+    &::placeholder {
+      color: white;
+      opacity: 0.8;
+    }
+  }
+  svg {
+    margin: 15px;
+  }
+}
+
+.iconRight {
+  float: right;
+}

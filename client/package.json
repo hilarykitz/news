@@ -1,0 +1,32 @@
+{
+  "name": "EggParty",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p build start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "build-css": "node-sass-chokidar src/ -o src/dist",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/dist --watch --recursive",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:5000/",
+  "dependencies": {
+    "express": "^4.16.2",
+    "node-sass": "^4.9.0",
+    "node-sass-chokidar": "^1.2.2",
+    "react": "^16.3.2",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-dom": "^16.3.2",
+    "react-icons": "^2.2.7",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
+  }
+}

@@ -1,0 +1,30 @@
+.logo {
+  width: 90px;
+  height: auto;
+  text-align: center;
+  margin: 12px auto;
+  opacity: 0;
+  cursor: pointer;
+  animation: "fadeInTop" 1800ms cubic-bezier(0.79, -0.55, 0.2, 1.22) forwards; }
+  .logo .logoBtm {
+    width: 25px;
+    margin: 0 auto;
+    display: block; }
+
+.brandName {
+  color: white;
+  text-decoration: none;
+  line-height: 2; }
+
+.topMenuIcon {
+  position: absolute;
+  top: 15px;
+  right: 15px; }
+
+@keyframes 'fadeInTop' {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
