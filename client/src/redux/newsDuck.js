@@ -23,22 +23,31 @@ export const articlesFetchingError = payload => ({
 });
 
 //thunks
-export const fetchArticles = () => dispatch => {
-  getArticles();
-};
-
-export const fetchTopStories = (country = "ca") => async dispatch => {
+export const fetchArticles = endpoint => async dispatch => {
   try {
-    const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${API_KEY}`
-    );
+    dispatch(articlesFetching(true));
+    const response = await fetch(`${endpoint}&apiKey=${API_KEY}`);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
-
+    dispatch(articlesFetchingError(false));
     dispatch(articlesFetched(body.articles));
   } catch (error) {
-    console.log(error);
+    dispatch(articlesFetchingError(true));
+    console.log(`Failed to fetch articles from ${endpoint}: ${error}`);
+  } finally {
+    dispatch(articlesFetching(false));
   }
+};
+
+export const fetchTopStories = () => async dispatch => {
+  const endpoint = "https://newsapi.org/v2/top-headlines?country=gb";
+  dispatch(fetchArticles(endpoint));
+};
+
+export const fetchNewsByQuery = query => async dispatch => {
+  const query = query ? `?q=${query}` : "";
+  const endpoint = `https://newsapi.org/v2/everything${query}`;
+  dispatch(fetchArticles(endpoint));
 };
 
 export const initialState = {
@@ -50,7 +59,6 @@ export const initialState = {
 
 // reducer
 const newsReducer = (state = initialState, { type, payload }) => {
-  console.log(state);
   switch (type) {
     case ARTICLES_FETCHING: {
       return { ...state, articlesFetching: payload };
@@ -68,8 +76,7 @@ const newsReducer = (state = initialState, { type, payload }) => {
 // selectors
 export const getArticlesFromStore = ({ newsReducer }) => {
   return {
-    articles: newsReducer.articles,
-    articlesFetchingError: newsReducer.articlesFetchingError
+    articles: newsReducer.articles
   };
 };
 
