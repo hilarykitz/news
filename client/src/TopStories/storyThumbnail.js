@@ -12,13 +12,19 @@ export const storyThumbnail = ({
   urlToImage,
   publishedAt
 }) => {
-  return (
-    <div>
-      <h2>{title}</h2>
-      <small>{author}</small>
-      <div>
-        <p>{description}</p>
+  return description ? (
+    <div className="storyThumbnail">
+      <div className="storyDescription">
+        <a href={url} target="blank">
+          <h2>{title}</h2>
+        </a>
+        <img alt={title} src={urlToImage} />
+        <div>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
+  ) : (
+    ""
   );
 };

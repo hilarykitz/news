@@ -1,7 +1,8 @@
 .searchWrapper {
   color: white;
   width: 100vw;
-  background: rgba(255, 255, 255, 0.15); }
+  position: fixed;
+  background: pink; }
   .searchWrapper h2,
   .searchWrapper h3 {
     margin: 0; }
@@ -11,15 +12,42 @@
     background: transparent;
     color: white;
     font-size: 18px;
-    padding: 15px; }
+    padding: 20px; }
     .searchWrapper input::placeholder {
       color: white;
       opacity: 0.8; }
-  .searchWrapper svg {
-    margin: 15px; }
 
-.iconRight {
-  float: right; }
+.searchBtn {
+  float: right;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px; }
+
+.storyWrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px; }
+  .storyWrap .storyThumbnail {
+    border-radius: 2px;
+    width: 300px;
+    margin: 20px;
+    flex: 1 1 auto;
+    justify-content: center; }
+    .storyWrap .storyThumbnail .storyDescription {
+      background: white;
+      height: 100%;
+      color: #222;
+      padding: 20px; }
+      .storyWrap .storyThumbnail .storyDescription img {
+        width: 400px; }
+      .storyWrap .storyThumbnail .storyDescription a {
+        padding: 0 0 20px 0;
+        border-bottom: 2px rgba(0, 0, 0, 0.25) solid;
+        color: #222;
+        text-decoration: none;
+        transition: color 0.2s;
+        cursor: pointer; }
+        .storyWrap .storyThumbnail .storyDescription a:hover {
+          color: pink; }
 
 body {
   width: 100%;
@@ -27,13 +55,13 @@ body {
   margin: 0; }
 
 .container {
-  height: 100vh;
   overflow: auto;
-  transition: all 0.75s;
-  opacity: 1;
   position: relative;
   background-image: linear-gradient(0deg, #0b92ef 24%, #00d2be 100%);
   color: white; }
+
+img {
+  max-width: 100%; }
 
 * {
   box-sizing: border-box;

@@ -1,4 +1,5 @@
 @import "search";
+@import "storyCards";
 
 body {
   width: 100%;
@@ -6,13 +7,14 @@ body {
   margin: 0;
 }
 .container {
-  height: 100vh;
   overflow: auto;
-  transition: all 0.75s;
-  opacity: 1;
   position: relative;
   background-image: linear-gradient(0deg, #0b92ef 24%, #00d2be 100%);
   color: white;
+}
+
+img {
+  max-width: 100%;
 }
 
 * {

@@ -1,0 +1,34 @@
+@import "variables";
+
+.storyWrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  .storyThumbnail {
+    border-radius: 2px;
+    width: 300px;
+    margin: $spacingUnit;
+    flex: 1 1 auto;
+    justify-content: center;
+    .storyDescription {
+      background: white;
+      height: 100%;
+      color: $textBlack;
+      padding: $spacingUnit;
+      img {
+        width: 400px;
+      }
+      a {
+        padding: 0 0 $spacingUnit 0;
+        border-bottom: 2px $shadow solid;
+        color: $textBlack;
+        text-decoration: none;
+        transition: color 0.2s;
+        cursor: pointer;
+        &:hover {
+          color: pink;
+        }
+      }
+    }
+  }
+}

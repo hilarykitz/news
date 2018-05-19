@@ -27,8 +27,7 @@ class Search extends Component {
           onChange={e => this.saveString(e)}
           value={searchString}
         />
-        <div className="iconRight">
-          <span>Search</span>
+        <div className="searchBtn">
           <MdSearch color="white" size={26} />
         </div>
       </div>

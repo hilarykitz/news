@@ -8,7 +8,11 @@ const TopStories = props => {
   if (!articles.length) {
     fetchTopStories();
   }
-  return articles.map(article => storyThumbnail(article));
+  return (
+    <div className="storyWrap">
+      {articles.map(article => storyThumbnail(article))}
+    </div>
+  );
 };
 
 const mapStateToProps = state => getArticlesFromStore(state);

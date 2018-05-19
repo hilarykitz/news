@@ -1,7 +1,8 @@
 .searchWrapper {
   color: white;
   width: 100vw;
-  background: rgba(255, 255, 255, 0.15); }
+  position: fixed;
+  background: pink; }
   .searchWrapper h2,
   .searchWrapper h3 {
     margin: 0; }
@@ -11,12 +12,12 @@
     background: transparent;
     color: white;
     font-size: 18px;
-    padding: 15px; }
+    padding: 20px; }
     .searchWrapper input::placeholder {
       color: white;
       opacity: 0.8; }
-  .searchWrapper svg {
-    margin: 15px; }
 
-.iconRight {
-  float: right; }
+.searchBtn {
+  float: right;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px; }
