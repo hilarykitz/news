@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getArticlesFromStore, fetchTopStories } from "../redux/newsDuck";
+import StoryCategories from "./storyCategories";
 import StoriesTitle from "./storiesTitle";
 import { storyThumbnail } from "./storyThumbnail";
 
@@ -13,6 +14,7 @@ const Stories = props => {
 
   return (
     <div className="storyWrap">
+      <StoryCategories />
       <StoriesTitle />
       {articles.map(article => storyThumbnail(article, totalArticles))}
     </div>

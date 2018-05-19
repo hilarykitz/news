@@ -1,0 +1,25 @@
+@import "variables";
+
+.filters {
+  flex-wrap: wrap;
+  margin: 20px auto 0;
+  cursor: pointer;
+
+  .filterPill {
+    background: $sheerWhite;
+    color: white;
+    border-radius: $defaultPad;
+    padding: 0.5 * $defaultPad $defaultPad;
+    flex: 0 0 auto;
+    display: inline-flex;
+    margin: 0 40px;
+    &.active {
+      background: $nearOpaqueWhite;
+      color: pink;
+    }
+    &:hover {
+      background: $nearOpaqueWhite;
+      color: pink;
+    }
+  }
+}

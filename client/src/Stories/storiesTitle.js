@@ -4,7 +4,6 @@ import { getSearchQuery } from "../redux/newsDuck";
 
 const storiesTitle = props => {
   const { searchQuery } = props;
-
   return (
     <h2 className="storiesTitle">
       Top Stories

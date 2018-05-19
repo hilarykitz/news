@@ -65,6 +65,16 @@ export const fetchNewsByQuery = query => async dispatch => {
   dispatch(saveSearchQuery(query));
 };
 
+export const fetchNewsByCategory = category => async dispatch => {
+  if (!category) {
+    dispatch(fetchTopStories());
+    return;
+  }
+  const endpoint = `https://newsapi.org/v2/top-headlines?country=gb&category=${category}`;
+  dispatch(fetchArticles(endpoint));
+  dispatch(saveSearchQuery(category));
+};
+
 export const initialState = {
   articles: [0, 1, 2, 3, 4, 5, 6],
   articlesFetching: false,
