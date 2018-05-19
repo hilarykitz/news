@@ -5,8 +5,8 @@
   .storyWrap .storiesTitle {
     width: 100%;
     text-align: center;
-    color: #d5b6ff;
-    border-bottom: 2px #d5b6ff solid;
+    color: white;
+    border-bottom: 2px white solid;
     margin: 30px 30vw;
     padding: 0 0 15px 0; }
   .storyWrap .storyThumbnail {
@@ -17,7 +17,7 @@
     flex: 1 1 auto; }
     .storyWrap .storyThumbnail .storyDescription,
     .storyWrap .storyThumbnail .storyPlaceholder {
-      background: white;
+      background: rgba(255, 255, 255, 0.7);
       height: 100%;
       color: #222;
       padding: 20px;

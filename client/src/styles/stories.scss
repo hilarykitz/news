@@ -7,8 +7,8 @@
   .storiesTitle {
     width: 100%;
     text-align: center;
-    color: $lilac;
-    border-bottom: 2px $lilac solid;
+    color: white;
+    border-bottom: 2px white solid;
     margin: 30px 30vw;
     padding: 0 0 15px 0;
   }
@@ -17,15 +17,15 @@
     border-radius: 2px;
     width: 300px;
     min-height: 300px;
-    margin: $spacingUnit;
+    margin: $defaultPad;
     flex: 1 1 auto;
 
     .storyDescription,
     .storyPlaceholder {
-      background: white;
+      background: $nearOpaqueWhite;
       height: 100%;
       color: $textBlack;
-      padding: $spacingUnit;
+      padding: $defaultPad;
       box-shadow: $boxShadow;
       color: $textBlack;
       text-decoration: none;
@@ -42,7 +42,7 @@
 
       h2 {
         border-bottom: 2px $lilac solid;
-        padding: 0 0 $spacingUnit 0;
+        padding: 0 0 $defaultPad 0;
       }
 
       &:hover {

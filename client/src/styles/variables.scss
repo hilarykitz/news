@@ -1,5 +1,6 @@
 //colours
 $sheerWhite: rgba(255, 255, 255, 0.15);
+$nearOpaqueWhite: rgba(255, 255, 255, 0.7);
 $textBlack: #222;
 $lilac: #d5b6ff;
 
@@ -11,4 +12,4 @@ $fontLarge: 18px;
 $hoverTransition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 
 //layout
-$spacingUnit: 20px;
+$defaultPad: 20px;

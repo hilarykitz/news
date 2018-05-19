@@ -13,11 +13,15 @@
     background: transparent;
     color: white;
     font-size: 18px;
-    padding: 20px;
-    width: calc(100% - 70px); }
+    padding: 20px 0 5px;
+    margin: 0 20px 15px;
+    border-bottom: 1px white solid;
+    width: calc(100% - 110px);
+    opacity: 0.7; }
     .searchWrapper input::placeholder {
-      color: white;
-      opacity: 0.8; }
+      color: white; }
+    .searchWrapper input:focus {
+      opacity: 1; }
 
 .searchBtn {
   float: right;

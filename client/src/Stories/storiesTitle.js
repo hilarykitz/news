@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getSearchQuery } from "../redux/newsDuck";
 
-const SearchQueryTitle = props => {
+const storiesTitle = props => {
   const { searchQuery } = props;
 
   return (
@@ -15,4 +15,4 @@ const SearchQueryTitle = props => {
 
 const mapStateToProps = state => getSearchQuery(state);
 
-export default connect(mapStateToProps, null)(SearchQueryTitle);
+export default connect(mapStateToProps, null)(storiesTitle);

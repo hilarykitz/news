@@ -15,12 +15,17 @@
     border: none;
     background: transparent;
     color: white;
-    font-size: $fontLarge;
-    padding: $spacingUnit;
-    width: calc(100% - 70px);
+    font-size: 18px;
+    padding: $defaultPad 0 $defaultPad * 0.25;
+    margin: 0 $defaultPad $defaultPad * 0.75;
+    border-bottom: 1px white solid;
+    width: calc(100% - 110px);
+    opacity: 0.7;
     &::placeholder {
       color: white;
-      opacity: 0.8;
+    }
+    &:focus {
+      opacity: 1;
     }
   }
 }
@@ -28,7 +33,7 @@
 .searchBtn {
   float: right;
   background: $sheerWhite;
-  padding: $spacingUnit;
+  padding: $defaultPad;
   border: none;
   outline: none;
   -webkit-appearance: none;
