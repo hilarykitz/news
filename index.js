@@ -1,39 +1,53 @@
 const express = require("express");
-const cache = require("memory-cache");
 const app = express();
-const router = express.Router();
-
+const memCache = require("memory-cache");
 const port = process.env.PORT || 5000;
 
-const NewsAPI = require("newsapi");
-const newsapi = new NewsAPI("2cd86ec8b59b4e7d8b2b14ea90a075e6");
-// To query /v2/top-headlines
-// All options passed to topHeadlines are optional, but you need to include at least one of them
+var cache = duration => {
+  return (req, res, next) => {
+    let key = "__express__" + req.originalUrl || req.url;
+    let cachedBody = memCache.get(key);
+    if (cachedBody) {
+      res.send(cachedBody);
+      return;
+    } else {
+      res.sendResponse = res.send;
+      res.send = body => {
+        memCache.put(key, body, duration * 1000);
+        res.sendResponse(body);
+      };
+      next();
+    }
+  };
+};
 
-app.get("/", (req, res) => {
-  const topHeadlines = newsapi.v2
+app.get("/", cache(10), (req, res) => {
+  const topArticles = newsapi.v2
     .topHeadlines({
-      // sources: "bbc-news,the-verge",
-      // q: "bitcoin",
-      // category: "business",
-      language: "en"
-      // country: "us"
+      country: "gb"
     })
     .then(response => {
-      console.log(response.articles);
-      /*
-      {
-        status: "ok",
-        articles: [...]
-      }
-    */
+      return response.articles;
+    })
+    .then(articles => {
+      return articles;
     });
-
+  console.log(topArticles);
+  console.log("helloooo");
   try {
     res.json(topHeadlines);
+    res.render("index", {
+      articles: topArticles
+    });
   } catch (err) {
     console.warn("No articles found: " + err);
   }
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.use((req, res) => {
+  res.status(404).send(""); //not found
+});
+
+app.listen(port, function() {
+  console.log(`Example app listening on port ${process.env.PORT}!`);
+});

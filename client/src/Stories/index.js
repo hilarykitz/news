@@ -1,15 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { getArticlesFromStore, fetchTopStories } from "../redux/newsDuck";
+import SearchQueryTitle from "../SearchQueryTitle";
 import { storyThumbnail } from "./storyThumbnail";
 
-const TopStories = props => {
+const Stories = props => {
   const { articles, fetchTopStories } = props;
   if (!articles.length) {
     fetchTopStories();
   }
   return (
     <div className="storyWrap">
+      <SearchQueryTitle />
       {articles.map(article => storyThumbnail(article))}
     </div>
   );
@@ -21,4 +23,4 @@ const mapDispatchToProps = {
   fetchTopStories
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopStories);
+export default connect(mapStateToProps, mapDispatchToProps)(Stories);

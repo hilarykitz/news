@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
+
 import Search from "../Search";
-import TopStories from "../TopStories";
+import Stories from "../Stories";
 
 class MainView extends Component {
   render() {
     return (
       <Fragment>
         <Search />
-        <TopStories />
+        <Stories />
       </Fragment>
     );
   }

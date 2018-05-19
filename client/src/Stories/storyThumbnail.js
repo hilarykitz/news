@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React from "react";
 
 export const storyThumbnail = ({
   source,
@@ -13,7 +13,7 @@ export const storyThumbnail = ({
   publishedAt
 }) => {
   return description ? (
-    <div className="storyThumbnail">
+    <div key={url} className="storyThumbnail">
       <div className="storyDescription">
         <a href={url} target="blank">
           <h2>{title}</h2>

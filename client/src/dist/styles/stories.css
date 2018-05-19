@@ -1,8 +1,31 @@
-.storyThumbnail {
-  background: white;
-  color: #222;
-  border-radius: 2px;
-  padding: 20px;
-  width: 320px;
-  float: left;
-  margin: 20px; }
+.storyWrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px; }
+  .storyWrap .storiesTitle {
+    width: 100%;
+    text-align: center; }
+  .storyWrap .storyThumbnail {
+    border-radius: 2px;
+    width: 300px;
+    margin: 20px;
+    flex: 1 1 auto;
+    justify-content: center;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2); }
+    .storyWrap .storyThumbnail .storyDescription {
+      background: white;
+      height: 100%;
+      color: #222;
+      padding: 20px; }
+      .storyWrap .storyThumbnail .storyDescription img {
+        width: 400px; }
+      .storyWrap .storyThumbnail .storyDescription a {
+        padding: 0 0 20px 0;
+        color: #222;
+        text-decoration: none;
+        transition: color 0.2s;
+        cursor: pointer; }
+        .storyWrap .storyThumbnail .storyDescription a:hover {
+          color: pink; }
+        .storyWrap .storyThumbnail .storyDescription a h2 {
+          border-bottom: 2px #d5b6ff solid; }

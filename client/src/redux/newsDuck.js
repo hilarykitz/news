@@ -1,10 +1,10 @@
-import { getArticles } from "./getArticles";
 import { API_KEY } from "./common";
 
 // action types
 export const ARTICLES_FETCHING = () => `NEWS/ARTICLES_FETCHING`;
 export const ARTICLES_FETCHED = () => `NEWS/ARTICLES_FETCHED`;
 export const ARTICLES_FETCHING_ERROR = () => `NEWS/ARTICLES_FETCHING_ERROR`;
+export const NEW_SEARCH_QUERY = () => `NEWS/NEW_SEARCH_QUERY`;
 
 // action creators
 export const articlesFetching = articles => ({
@@ -19,6 +19,11 @@ export const articlesFetched = payload => ({
 
 export const articlesFetchingError = payload => ({
   type: ARTICLES_FETCHING_ERROR,
+  payload
+});
+
+export const saveSearchQuery = payload => ({
+  type: NEW_SEARCH_QUERY,
   payload
 });
 
@@ -42,19 +47,25 @@ export const fetchArticles = endpoint => async dispatch => {
 export const fetchTopStories = () => async dispatch => {
   const endpoint = "https://newsapi.org/v2/top-headlines?country=gb";
   dispatch(fetchArticles(endpoint));
+  dispatch(saveSearchQuery(""));
 };
 
 export const fetchNewsByQuery = query => async dispatch => {
-  const query = query ? `?q=${query}` : "";
-  const endpoint = `https://newsapi.org/v2/everything${query}`;
+  if (!query) {
+    dispatch(fetchTopStories());
+    return;
+  }
+  const endpoint = `https://newsapi.org/v2/everything?q=${query}`;
   dispatch(fetchArticles(endpoint));
+  dispatch(saveSearchQuery(query));
 };
 
 export const initialState = {
   articles: [],
   articlesFetching: false,
   articlesFetchingError: false,
-  totalArticles: 0
+  totalArticles: 0,
+  articleQuery: ""
 };
 
 // reducer
@@ -69,6 +80,9 @@ const newsReducer = (state = initialState, { type, payload }) => {
     case ARTICLES_FETCHING_ERROR: {
       return { ...state, articlesFetchingError: payload };
     }
+    case NEW_SEARCH_QUERY: {
+      return { ...state, searchQuery: payload };
+    }
     default:
       return state;
   }
@@ -78,6 +92,10 @@ export const getArticlesFromStore = ({ newsReducer }) => {
   return {
     articles: newsReducer.articles
   };
+};
+
+export const getSearchQuery = ({ newsReducer }) => {
+  return { searchQuery: newsReducer.searchQuery };
 };
 
 export default newsReducer;

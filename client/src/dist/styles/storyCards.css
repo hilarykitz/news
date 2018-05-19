@@ -17,10 +17,11 @@
         width: 400px; }
       .storyWrap .storyThumbnail .storyDescription a {
         padding: 0 0 20px 0;
-        border-bottom: 2px rgba(0, 0, 0, 0.25) solid;
         color: #222;
         text-decoration: none;
         transition: color 0.2s;
         cursor: pointer; }
         .storyWrap .storyThumbnail .storyDescription a:hover {
           color: pink; }
+        .storyWrap .storyThumbnail .storyDescription a h2 {
+          border-bottom: 2px #d5b6ff solid; }

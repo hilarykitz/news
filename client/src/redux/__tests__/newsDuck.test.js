@@ -9,7 +9,6 @@ import reducer, {
   initialState,
   fetchArticles,
   fetchTopStories,
-  fetchNewsByQuery,
   getArticlesFromStore
 } from "../newsDuck.js";
 

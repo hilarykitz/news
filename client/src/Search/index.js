@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchNewsByQuery } from "../redux/newsDuck";
 import MdSearch from "react-icons/lib/md/search";
 
 class Search extends Component {
@@ -17,22 +19,33 @@ class Search extends Component {
     }
   };
 
+  submitSearch = (e, searchString) => {
+    e.preventDefault();
+    this.props.fetchNewsByQuery(searchString);
+  };
+
   render() {
     const { searchString } = this.state;
 
     return (
       <div className="searchWrapper">
-        <input
-          placeholder="Find stories"
-          onChange={e => this.saveString(e)}
-          value={searchString}
-        />
-        <div className="searchBtn">
-          <MdSearch color="white" size={26} />
-        </div>
+        <form onSubmit={e => this.submitSearch(e, searchString)}>
+          <input
+            placeholder="Search stories"
+            onChange={e => this.saveString(e)}
+            value={searchString}
+          />
+          <button className="searchBtn" type="submit">
+            <MdSearch color="white" size={26} />
+          </button>
+        </form>
       </div>
     );
   }
 }
 
-export default Search;
+const mapDispatchToProps = {
+  fetchNewsByQuery
+};
+
+export default connect(null, mapDispatchToProps)(Search);
