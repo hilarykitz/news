@@ -12,7 +12,7 @@ const buildThumbnail = ({
   urlToImage,
   publishedAt
 }) => {
-  return (
+  return description && urlToImage ? (
     <div key={url} className="storyThumbnail">
       <a href={url} target="blank">
         <div className="storyDescription">
@@ -22,13 +22,15 @@ const buildThumbnail = ({
         </div>
       </a>
     </div>
+  ) : (
+    ""
   );
 };
 
 const buildPlaceholder = () => (
   <div className="storyThumbnail">
-    <div className="storyDescription">
-      <h2 />
+    <div className="storyPlaceholder">
+      <h2>...</h2>
     </div>
   </div>
 );

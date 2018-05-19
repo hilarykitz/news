@@ -1,5 +1,4 @@
-import { API_KEY } from "./common";
-
+const API_KEY = "2cd86ec8b59b4e7d8b2b14ea90a075e6";
 // action types
 export const ARTICLES_FETCHING = () => `NEWS/ARTICLES_FETCHING`;
 export const ARTICLES_FETCHED = () => `NEWS/ARTICLES_FETCHED`;
