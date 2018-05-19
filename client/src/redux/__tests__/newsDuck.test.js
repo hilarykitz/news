@@ -6,6 +6,7 @@ import reducer, {
   ARTICLES_FETCHING,
   ARTICLES_FETCHED,
   ARTICLES_FETCHING_ERROR,
+  ARTICLE_COUNT,
   initialState,
   fetchArticles,
   fetchTopStories,
@@ -21,6 +22,11 @@ import {
 const mockArticlesFetching = {
   type: ARTICLES_FETCHING,
   payload: true
+};
+
+const mockArticleCount = {
+  type: ARTICLE_COUNT,
+  payload: MOCK_ARTICLES.length
 };
 
 const mockArticlesFetchingError = {
@@ -45,7 +51,8 @@ const mockArticlesFetched = {
 
 const MOCK_FILLED_STATE = {
   newsReducer: {
-    articles: MOCK_ARTICLES
+    articles: MOCK_ARTICLES,
+    totalArticles: 1
   }
 };
 
@@ -59,13 +66,14 @@ describe("newsDuckState", () => {
       await fetchArticles(MOCK_ENDPOINT)(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(5);
       expect(dispatch.mock.calls[0][0]).toEqual(mockArticlesFetching);
       expect(dispatch.mock.calls[1][0]).toEqual(
         mockArticlesFetchingErrorResolve
       );
-      expect(dispatch.mock.calls[2][0]).toEqual(mockArticlesFetched);
-      expect(dispatch.mock.calls[3][0]).toEqual(mockArticlesFetchingResolve);
+      expect(dispatch.mock.calls[2][0]).toEqual(mockArticleCount);
+      expect(dispatch.mock.calls[3][0]).toEqual(mockArticlesFetched);
+      expect(dispatch.mock.calls[4][0]).toEqual(mockArticlesFetchingResolve);
     });
   });
 
@@ -84,12 +92,18 @@ describe("newsDuckState", () => {
   describe("SELECTORS", () => {
     test("getArticlesFromStore selector should return articles", () => {
       const getArticles = getArticlesFromStore(MOCK_FILLED_STATE);
-      expect(getArticles).toEqual({ articles: MOCK_ARTICLES });
+      expect(getArticles).toEqual({
+        articles: MOCK_ARTICLES,
+        totalArticles: 1
+      });
     });
 
-    test("getArticlesFromStore selector should return empty array of articles without error if no articles", () => {
+    test("getArticlesFromStore selector should return initial array of mock values without error if no articles fetched", () => {
       const getArticles = getArticlesFromStore({ newsReducer: initialState });
-      expect(getArticles).toEqual({ articles: [] });
+      expect(getArticles).toEqual({
+        articles: initialState.articles,
+        totalArticles: 0
+      });
     });
   });
 });

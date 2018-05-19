@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export const storyThumbnail = ({
+const buildThumbnail = ({
   source,
   name,
   author,
@@ -12,19 +12,27 @@ export const storyThumbnail = ({
   urlToImage,
   publishedAt
 }) => {
-  return description ? (
+  return (
     <div key={url} className="storyThumbnail">
-      <div className="storyDescription">
-        <a href={url} target="blank">
+      <a href={url} target="blank">
+        <div className="storyDescription">
           <h2>{title}</h2>
-        </a>
-        <img alt={title} src={urlToImage} />
-        <div>
+          <img alt={title} src={urlToImage} />
           <p>{description}</p>
         </div>
-      </div>
+      </a>
     </div>
-  ) : (
-    ""
   );
+};
+
+const buildPlaceholder = () => (
+  <div className="storyThumbnail">
+    <div className="storyDescription">
+      <h2 />
+    </div>
+  </div>
+);
+
+export const storyThumbnail = (article, totalArticles) => {
+  return totalArticles > 0 ? buildThumbnail(article) : buildPlaceholder();
 };

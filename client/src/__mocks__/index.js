@@ -16,5 +16,6 @@ export const MOCK_ARTICLES = [
 ];
 
 export const MOCK_VALID_RESPONSE = {
-  articles: MOCK_ARTICLES
+  articles: MOCK_ARTICLES,
+  totalResults: 1
 };

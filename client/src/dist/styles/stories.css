@@ -4,28 +4,36 @@
   margin-top: 80px; }
   .storyWrap .storiesTitle {
     width: 100%;
-    text-align: center; }
+    text-align: center;
+    color: #d5b6ff;
+    border-bottom: 2px #d5b6ff solid;
+    margin: 30px 30vw;
+    padding: 0 0 15px 0; }
   .storyWrap .storyThumbnail {
     border-radius: 2px;
     width: 300px;
+    min-height: 300px;
     margin: 20px;
-    flex: 1 1 auto;
-    justify-content: center;
-    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2); }
+    flex: 1 1 auto; }
     .storyWrap .storyThumbnail .storyDescription {
       background: white;
       height: 100%;
       color: #222;
-      padding: 20px; }
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.22);
+      color: #222;
+      text-decoration: none;
+      word-wrap: break-word;
+      cursor: pointer; }
+      .storyWrap .storyThumbnail .storyDescription,
+      .storyWrap .storyThumbnail .storyDescription > h2 {
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
       .storyWrap .storyThumbnail .storyDescription img {
         width: 400px; }
-      .storyWrap .storyThumbnail .storyDescription a {
-        padding: 0 0 20px 0;
-        color: #222;
-        text-decoration: none;
-        transition: color 0.2s;
-        cursor: pointer; }
-        .storyWrap .storyThumbnail .storyDescription a:hover {
-          color: pink; }
-        .storyWrap .storyThumbnail .storyDescription a h2 {
-          border-bottom: 2px #d5b6ff solid; }
+      .storyWrap .storyThumbnail .storyDescription h2 {
+        border-bottom: 2px #d5b6ff solid;
+        padding: 0 0 20px 0; }
+      .storyWrap .storyThumbnail .storyDescription:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.08); }
+        .storyWrap .storyThumbnail .storyDescription:hover h2 {
+          color: #d5b6ff; }

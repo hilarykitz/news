@@ -5,14 +5,16 @@ import SearchQueryTitle from "../SearchQueryTitle";
 import { storyThumbnail } from "./storyThumbnail";
 
 const Stories = props => {
-  const { articles, fetchTopStories } = props;
-  if (!articles.length) {
+  const { articles, totalArticles, fetchTopStories } = props;
+
+  if (totalArticles < 1) {
     fetchTopStories();
   }
+
   return (
     <div className="storyWrap">
       <SearchQueryTitle />
-      {articles.map(article => storyThumbnail(article))}
+      {articles.map(article => storyThumbnail(article, totalArticles))}
     </div>
   );
 };

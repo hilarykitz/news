@@ -15,8 +15,9 @@
     border: none;
     background: transparent;
     color: white;
-    font-size: 18px;
+    font-size: $fontLarge;
     padding: $spacingUnit;
+    width: calc(100% - 70px);
     &::placeholder {
       color: white;
       opacity: 0.8;
@@ -28,4 +29,7 @@
   float: right;
   background: $sheerWhite;
   padding: $spacingUnit;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
 }

@@ -5,6 +5,7 @@ export const ARTICLES_FETCHING = () => `NEWS/ARTICLES_FETCHING`;
 export const ARTICLES_FETCHED = () => `NEWS/ARTICLES_FETCHED`;
 export const ARTICLES_FETCHING_ERROR = () => `NEWS/ARTICLES_FETCHING_ERROR`;
 export const NEW_SEARCH_QUERY = () => `NEWS/NEW_SEARCH_QUERY`;
+export const ARTICLE_COUNT = () => `NEWS/ARTICLE_COUNT`;
 
 // action creators
 export const articlesFetching = articles => ({
@@ -27,6 +28,10 @@ export const saveSearchQuery = payload => ({
   payload
 });
 
+export const articleCount = payload => ({
+  type: ARTICLE_COUNT,
+  payload
+});
 //thunks
 export const fetchArticles = endpoint => async dispatch => {
   try {
@@ -35,6 +40,7 @@ export const fetchArticles = endpoint => async dispatch => {
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     dispatch(articlesFetchingError(false));
+    dispatch(articleCount(body.totalResults));
     dispatch(articlesFetched(body.articles));
   } catch (error) {
     dispatch(articlesFetchingError(true));
@@ -55,13 +61,13 @@ export const fetchNewsByQuery = query => async dispatch => {
     dispatch(fetchTopStories());
     return;
   }
-  const endpoint = `https://newsapi.org/v2/everything?q=${query}`;
+  const endpoint = `https://newsapi.org/v2/everything?q=${query}&language=en`;
   dispatch(fetchArticles(endpoint));
   dispatch(saveSearchQuery(query));
 };
 
 export const initialState = {
-  articles: [],
+  articles: [0, 1, 2, 3, 4, 5, 6],
   articlesFetching: false,
   articlesFetchingError: false,
   totalArticles: 0,
@@ -83,6 +89,9 @@ const newsReducer = (state = initialState, { type, payload }) => {
     case NEW_SEARCH_QUERY: {
       return { ...state, searchQuery: payload };
     }
+    case ARTICLE_COUNT: {
+      return { ...state, totalArticles: payload };
+    }
     default:
       return state;
   }
@@ -90,7 +99,8 @@ const newsReducer = (state = initialState, { type, payload }) => {
 // selectors
 export const getArticlesFromStore = ({ newsReducer }) => {
   return {
-    articles: newsReducer.articles
+    articles: newsReducer.articles,
+    totalArticles: newsReducer.totalArticles
   };
 };
 

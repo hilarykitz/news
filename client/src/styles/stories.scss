@@ -7,34 +7,47 @@
   .storiesTitle {
     width: 100%;
     text-align: center;
+    color: $lilac;
+    border-bottom: 2px $lilac solid;
+    margin: 30px 30vw;
+    padding: 0 0 15px 0;
   }
 
   .storyThumbnail {
     border-radius: 2px;
     width: 300px;
+    min-height: 300px;
     margin: $spacingUnit;
     flex: 1 1 auto;
-    justify-content: center;
-    box-shadow: $boxShadow;
+
     .storyDescription {
       background: white;
       height: 100%;
       color: $textBlack;
       padding: $spacingUnit;
+      box-shadow: $boxShadow;
+      color: $textBlack;
+      text-decoration: none;
+      word-wrap: break-word;
+      cursor: pointer;
+      &,
+      > h2 {
+        transition: $hoverTransition;
+      }
+
       img {
         width: 400px;
       }
-      a {
+
+      h2 {
+        border-bottom: 2px $lilac solid;
         padding: 0 0 $spacingUnit 0;
-        color: $textBlack;
-        text-decoration: none;
-        transition: color 0.2s;
-        cursor: pointer;
-        &:hover {
-          color: pink;
-        }
+      }
+
+      &:hover {
+        box-shadow: $hoverBoxShadow;
         h2 {
-          border-bottom: 2px $lilac solid;
+          color: $lilac;
         }
       }
     }
