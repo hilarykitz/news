@@ -1,7 +1,10 @@
 @import "variables";
 
 .filters {
+  display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin: 20px auto 0;
   cursor: pointer;
 
@@ -12,7 +15,7 @@
     padding: 0.5 * $defaultPad $defaultPad;
     flex: 0 0 auto;
     display: inline-flex;
-    margin: 0 40px;
+    margin: 15px;
     &.active {
       background: $nearOpaqueWhite;
       color: pink;

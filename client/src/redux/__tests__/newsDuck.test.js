@@ -2,16 +2,20 @@
 
 global.fetch = require("jest-fetch-mock");
 
-import reducer, {
+import {
   ARTICLES_FETCHING,
   ARTICLES_FETCHED,
   ARTICLES_FETCHING_ERROR,
-  ARTICLE_COUNT,
+  ARTICLE_COUNT
+} from "../actions";
+
+import reducer, {
   initialState,
-  fetchArticles,
   fetchTopStories,
   getArticlesFromStore
 } from "../newsDuck.js";
+
+import { fetchArticles } from "../fetchArticles";
 
 import {
   MOCK_ENDPOINT,

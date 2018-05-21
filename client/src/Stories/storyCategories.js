@@ -19,6 +19,7 @@ const makeFilters = (fetchNewsByCategory, searchQuery) => {
     } filterPill`;
     filters.push(
       <div
+        key={`categories${i}`}
         className={filterClass}
         onClick={() => fetchNewsByCategory(categories[i])}
       >

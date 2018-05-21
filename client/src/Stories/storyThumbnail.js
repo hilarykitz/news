@@ -31,8 +31,8 @@ const buildThumbnail = ({
   );
 };
 
-const buildPlaceholder = () => (
-  <div className="storyThumbnail">
+const buildPlaceholder = article => (
+  <div key={article} className="storyThumbnail">
     <div className="storyPlaceholder">
       <h2>...</h2>
     </div>
@@ -40,5 +40,7 @@ const buildPlaceholder = () => (
 );
 
 export const storyThumbnail = (article, totalArticles) => {
-  return totalArticles > 0 ? buildThumbnail(article) : buildPlaceholder();
+  return totalArticles > 0
+    ? buildThumbnail(article)
+    : buildPlaceholder(article);
 };
