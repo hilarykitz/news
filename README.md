@@ -1,16 +1,17 @@
 # news
 
-A Little News App
+A Little News App, server-side rendered with React and Redux.
+Styling with sass.
 
 Future improvements:
 
 UX:
 
 * Animate loading cards while fetching stories from the API
-* friendly message if fetching fails
-* 'Popular Categories' buttons
-* Create a 'My Categories' menu from previous searches
-*
+* Friendly message if fetching fails
+* Ability to add and remove categories/sources/countries
+* Filter out non-news sources (ie deviantart is here for some reason?)
+* Ensure legacy browser support
 
 Stability:
 
@@ -18,9 +19,8 @@ Stability:
 * test coverage for all components
 * jest snapshots
 
-If the project were bigger:
+General Future Stuff:
 
-* Stylesheets in component folders
-* Split out newsDuck
-* An actual readMe with more gifs
-  ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+* Do a proper renderToString with cached API response so that articles don't refetch on refresh
+* Improve caching & throttling (atm it basically doesn't work)
+* Organize stylesheets in their component folders
